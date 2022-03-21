@@ -1,0 +1,9 @@
+#backend
+/backend/.project
+/backend/.classpath
+/backend/target
+
+#frontend
+/frontend/node_modules
+/frontend/yarn.lock
+
