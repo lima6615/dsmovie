@@ -2,6 +2,7 @@
 /backend/.project
 /backend/.classpath
 /backend/target
+/backend/.settings
 
 #frontend
 /frontend/node_modules
