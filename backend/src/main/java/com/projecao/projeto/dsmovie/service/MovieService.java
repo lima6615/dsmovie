@@ -36,7 +36,4 @@ public class MovieService {
 		Movie entity = obj.orElseThrow(() -> new ResourceNotFoundException(id));
 		return  modelMapper.map(entity, MovieDTO.class);
 	}
-
-
-
 }

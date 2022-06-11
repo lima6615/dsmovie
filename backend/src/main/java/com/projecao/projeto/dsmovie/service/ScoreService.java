@@ -48,8 +48,8 @@ public class ScoreService {
 		score = scoreRepository.save(score);
 		
 		double sum = 0.0;
-		for(Score s : movie.getScores()) {
-			sum = sum + s.getValue();
+		for (Score s : movie.getScores()) {
+			sum += s.getValue();
 		}
 		
 		double media = sum / movie.getScores().size();
@@ -60,5 +60,4 @@ public class ScoreService {
 		
 		return modelMapper.map(movie, MovieDTO.class);
 	}
-
 }
