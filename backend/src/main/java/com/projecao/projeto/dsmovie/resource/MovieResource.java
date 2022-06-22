@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,20 @@ import com.projecao.projeto.dsmovie.dto.MovieDTO;
 import com.projecao.projeto.dsmovie.service.MovieService;
 
 @RestController
-@RequestMapping(value = "/movie")
+@RequestMapping(value = "/movies")
+@CrossOrigin("*")
 public class MovieResource {
 
 	@Autowired
 	private MovieService service;
 
+	/*
+	 * @GetMapping public ResponseEntity<List<MovieDTO>> findAll() { 
+	 * 		List<MovieDTO>  dto = service.findAll(); 
+	 * 		return ResponseEntity.ok().body(dto);
+	 * }
+	 */
+	
 	@GetMapping
 	public ResponseEntity<Page<MovieDTO>> findAll(Pageable pageable) {
 		Page<MovieDTO> dto = service.findAll(pageable);
@@ -26,7 +35,7 @@ public class MovieResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<MovieDTO> findById(@PathVariable Long id){ 
+	public ResponseEntity<MovieDTO> findById(@PathVariable  Long id){ 
 		MovieDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}

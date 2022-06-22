@@ -1,6 +1,8 @@
 package com.projecao.projeto.dsmovie.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,13 @@ public class MovieService {
 	public Page<MovieDTO> findAll(Pageable pageable) {
 		Page<Movie> entity = repository.findAll(pageable);
 		Page<MovieDTO> dto = entity.map(x -> modelMapper.map(x, MovieDTO.class));
+		return dto;
+	}
+	
+	@Transactional(readOnly = true)
+	public List<MovieDTO> findAll() {
+		List<Movie> entity = repository.findAll();
+		List<MovieDTO> dto = entity.stream().map(x -> modelMapper.map(x, MovieDTO.class)).collect(Collectors.toList());
 		return dto;
 	}
 	
