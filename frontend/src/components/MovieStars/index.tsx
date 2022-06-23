@@ -11,6 +11,7 @@ type Props = {
 type StarProps = {
     fill: Number;
 }
+
 function getFills(score : number){ 
 
     const fills = [0, 0, 0, 0, 0];

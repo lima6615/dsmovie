@@ -8,7 +8,6 @@ import { MoviePage } from "types/movie";
 
 function Listing() {
 
-     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const[pageNumber, setPageNumber] = useState(0);
 
     const[page, setPage] = useState<MoviePage>({
@@ -31,9 +30,13 @@ function Listing() {
         })
     },[pageNumber]);
 
+    const handlePageCharge = (newPageNumber : number) =>{
+        setPageNumber(newPageNumber)
+    }
+
     return (
         <>
-            <Pagination />
+            <Pagination  onChange={handlePageCharge} page={page}/>
             <div className="container">
                 <div className="row">
                     {page.content.map(movie  => 
